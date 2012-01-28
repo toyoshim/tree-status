@@ -1,11 +1,9 @@
 /* Name: usbconfig.h
- * Project: V-USB, virtual USB port for Atmel's(r) AVR(r) microcontrollers
- * Author: Christian Starkjohann
- * Creation Date: 2005-04-01
- * Tabsize: 4
- * Copyright: (c) 2005 by OBJECTIVE DEVELOPMENT Software GmbH
- * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
- * This Revision: $Id: usbconfig-prototype.h 785 2010-05-30 17:57:07Z cs $
+ * Project: CrTreeStatus
+ * Author: Takashi Toyoshima
+ * Creation Date: 2012-01-03
+ * Copyright: (c) 2012 by Takashi Toyoshima
+ * License: GNU GPL v2 (see License.txt)
  */
 
 #ifndef __usbconfig_h_included__
@@ -27,7 +25,7 @@ section at the end of this file).
 /* This is the port where the USB bus is connected. When you configure it to
  * "B", the registers PORTB, PINB and DDRB will be used.
  */
-#define USB_CFG_DMINUS_BIT      4
+#define USB_CFG_DMINUS_BIT      3
 /* This is the bit number in USB_CFG_IOPORT where the USB D- line is connected.
  * This may be any bit in the port.
  */
@@ -116,7 +114,7 @@ section at the end of this file).
 /* Define this to 1 if the device has its own power supply. Set it to 0 if the
  * device is powered from the USB bus.
  */
-#define USB_CFG_MAX_BUS_POWER           40
+#define USB_CFG_MAX_BUS_POWER           250
 /* Set this variable to the maximum USB bus power consumption of your device.
  * The value is in milliamperes. [It will be divided by two since USB
  * communicates power requirements in units of 2 mA.]
@@ -216,31 +214,19 @@ section at the end of this file).
 
 /* -------------------------- Device Description --------------------------- */
 
-#define  USB_CFG_VENDOR_ID       0xc0, 0x16 /* = 0x16c0 = 5824 = voti.nl */
-/* USB vendor ID for the device, low byte first. If you have registered your
- * own Vendor ID, define it here. Otherwise you may use one of obdev's free
- * shared VID/PID pairs. Be sure to read USB-IDs-for-free.txt for rules!
- * *** IMPORTANT NOTE ***
- * This template uses obdev's shared VID/PID pair for Vendor Class devices
- * with libusb: 0x16c0/0x5dc.  Use this VID/PID pair ONLY if you understand
- * the implications!
+#define  USB_CFG_VENDOR_ID       0x66, 0x66
+/* USB vendor ID for the device, low byte first.
  */
-#define  USB_CFG_DEVICE_ID       0xdc, 0x05 /* = 0x05dc = 1500 */
+#define  USB_CFG_DEVICE_ID       0x10, 0x51 /* = 0x5110 */
 /* This is the ID of the product, low byte first. It is interpreted in the
- * scope of the vendor ID. If you have registered your own VID with usb.org
- * or if you have licensed a PID from somebody else, define it here. Otherwise
- * you may use one of obdev's free shared VID/PID pairs. See the file
- * USB-IDs-for-free.txt for details!
- * *** IMPORTANT NOTE ***
- * This template uses obdev's shared VID/PID pair for Vendor Class devices
- * with libusb: 0x16c0/0x5dc.  Use this VID/PID pair ONLY if you understand
- * the implications!
+ * scope of the vendor ID.
  */
 #define USB_CFG_DEVICE_VERSION  0x00, 0x01
 /* Version number of the device: Minor number first, then major number.
  */
-#define USB_CFG_VENDOR_NAME     'o', 'b', 'd', 'e', 'v', '.', 'a', 't'
-#define USB_CFG_VENDOR_NAME_LEN 8
+#define USB_CFG_VENDOR_NAME     'T', 'O', 'Y', 'O', 'S', 'H', 'I', 'M', \
+                                'A', '-', 'H', 'O', 'U', 'S', 'E'
+#define USB_CFG_VENDOR_NAME_LEN 15
 /* These two values define the vendor name returned by the USB device. The name
  * must be given as a list of characters under single quotes. The characters
  * are interpreted as Unicode (UTF-16) entities.
@@ -249,8 +235,9 @@ section at the end of this file).
  * obdev's free shared VID/PID pair. See the file USB-IDs-for-free.txt for
  * details.
  */
-#define USB_CFG_DEVICE_NAME     'L', 'E', 'D', 'C', 'o', 'n', 't', 'r', 'o', 'l'
-#define USB_CFG_DEVICE_NAME_LEN 10
+#define USB_CFG_DEVICE_NAME     'C', 'r', 'T', 'r', 'e', 'e', 'S', 't', \
+                                'a', 't', 'u', 's'
+#define USB_CFG_DEVICE_NAME_LEN 12
 /* Same as above for the device name. If you don't want a device name, undefine
  * the macros. See the file USB-IDs-for-free.txt before you assign a name if
  * you use a shared VID/PID.
